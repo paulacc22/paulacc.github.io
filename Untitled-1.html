@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad Educativa Santistevan</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles inspired by modern design */
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #00509E;
+            --accent-amber: #F59E0B;
+            --light-gray: #F8F9FA;
+            --dark-gray: #1F2937;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 21, 41, 0.7), rgba(0, 21, 41, 0.7)), url('https://placehold.co/1920x1080/003366/FFFFFF?text=Campus+Santistevan');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .text-shadow {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px -5px rgba(0, 51, 102, 0.15);
+        }
+
+        .chat-bubble-user {
+            background-color: #DBEAFE; /* blue-100 */
+            color: #1E3A8A; /* blue-900 */
+        }
+
+        .chat-bubble-ai {
+            background-color: #E5E7EB; /* gray-200 */
+            color: #1F2937; /* gray-800 */
+        }
+
+        /* Animation on Scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-blue);
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-blue);
+        }
+
+        .btn-secondary {
+             background-color: var(--accent-amber);
+             transition: background-color 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #D97706; /* amber-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="https://placehold.co/150x50/003366/FFFFFF?text=Santistevan" alt="Logo Colegio Santistevan" class="h-10">
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="text-gray-600 hover:text-blue-800 font-medium">Inicio</a>
+                <a href="#nosotros" class="text-gray-600 hover:text-blue-800 font-medium">Propuesta</a>
+                <a href="#niveles" class="text-gray-600 hover:text-blue-800 font-medium">Niveles</a>
+                <a href="#asistente-virtual" class="text-gray-600 hover:text-blue-800 font-medium">Admisiones</a>
+                <a href="#noticias" class="text-gray-600 hover:text-blue-800 font-medium">Noticias</a>
+            </div>
+
+            <!-- Right side buttons -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#contacto" class="text-gray-600 hover:text-blue-800 font-medium">Contacto</a>
+                <a href="#" class="btn-secondary text-white font-bold py-2 px-4 rounded-lg shadow-sm">Acceso Phidias</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <a href="#inicio" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Inicio</a>
+            <a href="#nosotros" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Propuesta</a>
+            <a href="#niveles" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Niveles</a>
+            <a href="#asistente-virtual" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Admisiones</a>
+            <a href="#noticias" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Noticias</a>
+            <a href="#contacto" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contacto</a>
+            <a href="#" class="block py-3 px-4 text-center text-white font-bold bg-amber-500 hover:bg-amber-600">Acceso Phidias</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-bg h-[70vh] md:h-screen flex items-center justify-center text-white">
+            <div class="text-center px-4 fade-in-section is-visible">
+                <h1 class="text-4xl md:text-7xl font-extrabold text-shadow leading-tight">Educación que Transforma. <br> Futuros que Inspiran.</h1>
+                <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-shadow text-gray-200">En Santistevan, cultivamos el potencial de cada estudiante a través de la excelencia, la innovación y los valores.</p>
+                <div class="mt-10">
+                    <a href="#asistente-virtual" class="btn-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-800 transition-colors text-lg shadow-lg">Iniciar Admisión</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por Qué Santistevan (Value Proposition) -->
+        <section id="nosotros" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Nuestra Propuesta de Valor</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Un ecosistema educativo diseñado para el desarrollo integral, la curiosidad intelectual y la formación de líderes con propósito.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Card 1 -->
+                    <div class="text-center p-6 fade-in-section">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-800 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Excelencia Académica</h3>
+                        <p class="text-gray-600 text-sm">Programas rigurosos que desafían e inspiran, preparando a los estudiantes para un mundo globalizado.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="text-center p-6 fade-in-section" style="transition-delay: 100ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-800 mx-auto mb-4">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Formación Humana</h3>
+                        <p class="text-gray-600 text-sm">Cultivamos la empatía, la integridad y el liderazgo ético como pilares de nuestra comunidad.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="text-center p-6 fade-in-section" style="transition-delay: 200ms;">
+                         <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-800 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 2.5a2.5 2.5 0 0 0-5 0V11a2.5 2.5 0 0 0 5 0V2.5z"></path><path d="M12 11v4"></path><path d="M12 22a2.5 2.5 0 0 0 5 0V15a2.5 2.5 0 0 0-5 0v7z"></path><path d="M8.5 2.5a2.5 2.5 0 0 0-5 0V7a2.5 2.5 0 0 0 5 0V2.5z"></path><path d="M6 7v4"></path><path d="M6 18a2.5 2.5 0 0 0 5 0V13a2.5 2.5 0 0 0-5 0v5z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Aprendizaje Innovador</h3>
+                        <p class="text-gray-600 text-sm">Metodologías activas y tecnología de punta para un aprendizaje relevante y significativo.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="text-center p-6 fade-in-section" style="transition-delay: 300ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-800 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Perspectiva Global</h3>
+                        <p class="text-gray-600 text-sm">Fomentamos una mentalidad internacional, preparando a los estudiantes para ser ciudadanos del mundo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Niveles Educativos -->
+        <section id="niveles" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Un Camino para Cada Etapa</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Nivel Inicial -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in-section">
+                        <img src="https://placehold.co/600x400/3498DB/FFFFFF?text=Nivel+Inicial" alt="Imagen Nivel Inicial" class="w-full h-56 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Inicial</h3>
+                            <p class="text-gray-600 mb-5">El inicio de la aventura del saber a través del juego, la exploración y el cariño.</p>
+                            <a href="#" class="font-semibold text-blue-700 hover:text-blue-900">Descubrir &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Nivel Básica -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in-section" style="transition-delay: 150ms;">
+                        <img src="https://placehold.co/600x400/2ECC71/FFFFFF?text=Educación+Básica" alt="Imagen Educación Básica" class="w-full h-56 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Educación Básica</h3>
+                            <p class="text-gray-600 mb-5">Construyendo cimientos sólidos en conocimiento, habilidades y pensamiento crítico.</p>
+                            <a href="#" class="font-semibold text-blue-700 hover:text-blue-900">Explorar &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Nivel Bachillerato -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in-section" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/600x400/E74C3C/FFFFFF?text=Bachillerato" alt="Imagen Bachillerato" class="w-full h-56 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Bachillerato</h3>
+                            <p class="text-gray-600 mb-5">Preparación preuniversitaria de alto nivel que abre las puertas a un futuro exitoso.</p>
+                            <a href="#" class="font-semibold text-blue-700 hover:text-blue-900">Avanzar &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asistente Virtual de Admisiones (AI Powered) -->
+        <section id="asistente-virtual" class="py-20 bg-white">
+            <div class="container mx-auto px-6 fade-in-section">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">¿Listo para Unirte a Santistevan?</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Nuestro asistente virtual "Santi" puede resolver tus dudas sobre el proceso de admisión al instante.</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl p-4 sm:p-6 border border-gray-200">
+                    <div id="chat-window" class="h-80 overflow-y-auto mb-4 p-4 bg-gray-50 rounded-lg border">
+                        <!-- Chat messages will appear here -->
+                        <div class="flex justify-start mb-4">
+                            <div class="chat-bubble-ai rounded-lg py-2 px-4 max-w-md shadow-sm">
+                                ¡Hola! Soy Santi, tu asistente virtual. ¿Cómo puedo ayudarte hoy con el proceso de admisión en Santistevan?
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chat-suggestions" class="mb-4 flex flex-wrap gap-2">
+                        <button class="suggestion-btn bg-blue-100 text-blue-800 text-sm font-medium py-1 px-3 rounded-full hover:bg-blue-200 transition-colors">¿Cuáles son los pasos para la admisión?</button>
+                        <button class="suggestion-btn bg-blue-100 text-blue-800 text-sm font-medium py-1 px-3 rounded-full hover:bg-blue-200 transition-colors">¿Qué actividades extracurriculares ofrecen?</button>
+                    </div>
+                    <div class="flex">
+                        <input type="text" id="chat-input" class="w-full border rounded-l-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Escribe tu pregunta aquí...">
+                        <button id="send-btn" class="btn-primary text-white font-bold py-3 px-5 rounded-r-lg flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                        </button>
+                    </div>
+                    <div id="loading-indicator" class="text-center mt-2 text-gray-500 hidden">
+                        Santi está pensando...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Noticias y Eventos -->
+        <section id="noticias" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Vida Estudiantil</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Mantente al día con las últimas noticias, eventos y logros de nuestra comunidad.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Noticia 1 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in-section">
+                        <img src="https://placehold.co/600x400/9B59B6/FFFFFF?text=Feria+de+Ciencias" alt="Noticia 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">15 de Junio, 2024</span>
+                            <h3 class="text-xl font-semibold text-gray-800 my-2">Exitosa Feria de Ciencias y Tecnología</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Nuestros estudiantes demostraron su ingenio y creatividad en la feria anual de ciencias...</p>
+                            <a href="#" class="font-semibold text-blue-700 hover:text-blue-900 text-sm">Leer más &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Noticia 2 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in-section" style="transition-delay: 150ms;">
+                        <img src="https://placehold.co/600x400/F1C40F/FFFFFF?text=Día+Deportivo" alt="Noticia 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">01 de Junio, 2024</span>
+                            <h3 class="text-xl font-semibold text-gray-800 my-2">Celebramos Nuestro Día Deportivo</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Una jornada llena de alegría, competencia sana y espíritu de equipo entre todos los niveles...</p>
+                            <a href="#" class="font-semibold text-blue-700 hover:text-blue-900 text-sm">Leer más &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Noticia 3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in-section" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/600x400/1ABC9C/FFFFFF?text=Concurso+de+Oratoria" alt="Noticia 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-gray-500">25 de Mayo, 2024</span>
+                            <h3 class="text-xl font-semibold text-gray-800 my-2">Ganadores del Concurso de Oratoria</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Felicitamos a los brillantes estudiantes que destacaron en el concurso intercolegial de oratoria...</p>
+                            <a href="#" class="font-semibold text-blue-700 hover:text-blue-900 text-sm">Leer más &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="lg:col-span-1">
+                    <img src="https://placehold.co/150x50/FFFFFF/003366?text=Santistevan" alt="Logo Santistevan Blanco" class="h-10 mb-4">
+                    <p class="text-gray-400 text-sm">Formando líderes con excelencia y valores desde 1990.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10C2.5 4.64 4.64 2.5 7 2.5h10c2.36 0 4.5 2.14 4.5 4.5a24.12 24.12 0 0 1 0 10c0 2.36-2.14 4.5-4.5 4.5H7c-2.36 0-4.5-2.14-4.5-4.5Z"></path><path d="m10 15 5-3-5-3z"></path></svg></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Navegación</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#nosotros" class="text-gray-400 hover:text-white text-sm">Propuesta de Valor</a></li>
+                        <li><a href="#niveles" class="text-gray-400 hover:text-white text-sm">Niveles Educativos</a></li>
+                        <li><a href="#asistente-virtual" class="text-gray-400 hover:text-white text-sm">Proceso de Admisión</a></li>
+                        <li><a href="#noticias" class="text-gray-400 hover:text-white text-sm">Noticias y Eventos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mr-3 mt-1"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span>Av. Principal 123 y Calle Secundaria, Guayaquil, Ecuador</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mr-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>(04) 212-3456</span>
+                        </li>
+                         <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mr-3"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                            <span>info@santistevan.edu.ec</span>
+                        </li>
+                    </ul>
+                </div>
+
+                 <!-- Columna 4: Legal -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm">Términos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 Unidad Educativa Santistevan. Todos los derechos reservados. Diseñado con inspiración.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile menu toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- Animation on Scroll Logic ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- Asistente Virtual (AI Chatbot) Logic ---
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+        
+        let chatHistory = [];
+
+        // Function to add a message to the chat window
+        const addMessage = (message, sender) => {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('flex', 'mb-4');
+
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.classList.add('rounded-lg', 'py-2', 'px-4', 'max-w-md', 'shadow-sm');
+            bubbleDiv.innerHTML = message; // Use innerHTML to render line breaks
+
+            if (sender === 'user') {
+                messageDiv.classList.add('justify-end');
+                bubbleDiv.classList.add('chat-bubble-user');
+            } else {
+                messageDiv.classList.add('justify-start');
+                bubbleDiv.classList.add('chat-bubble-ai');
+            }
+            
+            messageDiv.appendChild(bubbleDiv);
+            chatWindow.appendChild(messageDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll to bottom
+        };
+
+        // Function to handle sending a message
+        const handleSendMessage = async () => {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+
+            addMessage(userMessage, 'user');
+            chatInput.value = '';
+            loadingIndicator.classList.remove('hidden');
+            document.getElementById('chat-suggestions').style.display = 'none';
+            
+            chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
+
+            try {
+                const apiKey = ""; // API key will be provided by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const schoolContext = `
+                    Eres un asistente virtual amigable y servicial para la Unidad Educativa Santistevan. Tu nombre es Santi.
+                    Tu propósito es responder preguntas de padres y futuros estudiantes sobre el colegio.
+                    Información clave del colegio:
+                    - Misión: Formar líderes con excelencia y valores.
+                    - Niveles: Inicial, Educación Básica y Bachillerato.
+                    - Valores: Excelencia Académica, Formación en Valores, Innovación y Tecnología, y una Comunidad Unida.
+                    - Admisiones: El proceso para 2025-2026 está abierto. Para detalles específicos como costos exactos, documentos y fechas límite, deben contactar directamente a la oficina de admisiones en info@santistevan.edu.ec o al (04) 212-3456.
+                    - Actividades Extracurriculares: Ofrecemos deportes (fútbol, baloncesto), clubes (ciencia, debate, robótica), y arte (música, teatro).
+                    - Contacto: Av. Principal 123, Guayaquil. Email: info@santistevan.edu.ec. Teléfono: (04) 212-3456.
+                    Reglas:
+                    1. Sé siempre amable, profesional y conciso.
+                    2. Usa un lenguaje claro y fácil de entender. Usa saltos de línea (\n) para formatear listas o pasos.
+                    3. Si no sabes una respuesta, indica amablemente que para esa información específica deben contactar al colegio directamente.
+                    4. NO respondas preguntas que no estén relacionadas con el Colegio Santistevan. Si te preguntan sobre otros temas, cortésmente responde: "Mi especialidad es dar información sobre el Colegio Santistevan. ¿Hay algo sobre el colegio en lo que te pueda ayudar?".
+                `;
+
+                const payload = {
+                    contents: [
+                        { role: "user", parts: [{ text: schoolContext }] },
+                        ...chatHistory
+                    ]
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                let aiMessage = "Lo siento, no pude procesar tu solicitud en este momento. Por favor, intenta de nuevo más tarde.";
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    aiMessage = result.candidates[0].content.parts[0].text;
+                }
+                
+                addMessage(aiMessage.replace(/\n/g, '<br>'), 'ai');
+                chatHistory.push({ role: "model", parts: [{ text: aiMessage }] });
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                addMessage("Hubo un error al contactar al asistente. Por favor, intente de nuevo.", 'ai');
+            } finally {
+                loadingIndicator.classList.add('hidden');
+            }
+        };
+
+        // Event Listeners
+        sendBtn.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSendMessage();
+            }
+        });
+
+        suggestionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                chatInput.value = btn.textContent;
+                handleSendMessage();
+            });
+        });
+    </script>
+</body>
+</html>
